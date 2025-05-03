@@ -1,13 +1,36 @@
-// Boolean Type
+// Object Type
 
-let status1: boolean = true;
-let check1: boolean = false;
+// let person: object;
+// let person: {}; // đây vẫn là kiểu object
 
-let test1: boolean = Boolean("false"); // true
-console.log(">>> check test1: ", test1);
+// person = { name: "Nam" };
 
-// "", null, undefined, 0, NaN => false
-// " ", "0", "false", không rỗng => true
+// không thể khai báo type cho thuộc tính của object
+// let pro = {
+//     name: "Nam", // string
+//     age: 18, // number
+// };
 
-status1 = false; // valid
+/*cách 1*/
+// let pro1: {
+//     name: string,
+//     age: number
+// };
+
+// pro1 = {
+//     name: "Nam", // string
+//     age: 18, // number
+// };
+
+/*cách 2*/
+let pro1: {
+    name: string,
+    age: number
+} = {
+    name: "Nam", // string
+    age: 18, // number
+};
+
+// error
+// pro1.address = "Hà Nội"; // không thể thêm thuộc tính mới vào object đã khai báo type
 
