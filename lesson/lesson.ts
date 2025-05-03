@@ -1,13 +1,11 @@
-// Type Annotations - Keyword Type
+// Type Inference - Tự động gán type
 
-let count: number = 1; // khai báo type cho biến count là number
+let count: string = "Nam hoang";
 
-// count = "name"; // Error: Type 'string' is not assignable to type 'number'
+console.log(">>> check count : ", count);
 
-// console.log(">>> check count: ", count);
+let test = ['nam', 'hoang', 'typescript', 7];
 
-let names: string[] = ['nam', 'hoang', 'vainho']; // array chỉ chứa string
-// names.push(54); // error
-names.push("hihi"); // ok
+test.push(1);
 
-console.log(">>> check names: ", names);
+// https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html
