@@ -1,36 +1,10 @@
-// Object Type
+// Array Type
 
-// let person: object;
-// let person: {}; // đây vẫn là kiểu object
+//mixed types: khai báo nhiều type cho 1 biến
+let test: (string | number)[] = ["nam"];
 
-// person = { name: "Nam" };
+test.push("hoang");
 
-// không thể khai báo type cho thuộc tính của object
-// let pro = {
-//     name: "Nam", // string
-//     age: 18, // number
-// };
+test.push(18);
 
-/*cách 1*/
-// let pro1: {
-//     name: string,
-//     age: number
-// };
-
-// pro1 = {
-//     name: "Nam", // string
-//     age: 18, // number
-// };
-
-/*cách 2*/
-let pro1: {
-    name: string,
-    age: number
-} = {
-    name: "Nam", // string
-    age: 18, // number
-};
-
-// error
-// pro1.address = "Hà Nội"; // không thể thêm thuộc tính mới vào object đã khai báo type
-
+console.log(">>> check array ", test);
