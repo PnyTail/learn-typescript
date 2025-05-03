@@ -1,9 +1,7 @@
-const sum = (x: number, y: number) => {
-    return x + y;
-}
+const nameTS = "Namhp";
 
-// no error
-console.log(">>> check sum = ", sum(1, 2)); // check sum = 3
+console.log('length = ', nameTS.length);
 
-// error
-// console.log(">>> check sum = ", sum(3, '12'));
+console.log("uppercase: ", nameTS.toUpperCase());
+
+// typescript gợi ý code, khác với js
