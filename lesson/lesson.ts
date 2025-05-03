@@ -1,13 +1,9 @@
-// Type Inference - Tự động gán type
+// String type
 
-let a: number = 6.9;
+let name1: string = "Nam Hoang";
 
-const b: number = 324;
+let name2: string = `Nam 
+Hoang`;
 
-let c: number;
-c = 34.34;
+console.log(">>> check name2: ", name2);
 
-console.log(">>> check c: ", c);
-
-
-// let big = 999999999999999999999999999999999999999999; // kiểu dữ liệu lớn thì dùng BigInt, nhưng rất hiếm khi dùng
