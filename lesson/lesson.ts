@@ -1,20 +1,23 @@
-// Tuple types
+// Enum types
 
-let skills = ['HTML', 31];
-skills.push('CSS'); // OK
-skills.push(55); // OK
+// Enum (enumerated : liệt kê, one by one) là 1 nhóm các giá trị hằng số.
 
-// tuple: dataType, order, size
-let skills2: [string, number] = ['Javascript', 38];
+// enum API_STATUS {
+//     PENDING, FULFILLED, REJECTED
+// }
 
-let skills3: [boolean, string, number];
-skills3 = [true, 'HTML', 25]; // OK
+// let a1 = API_STATUS.PENDING; //0
+// let a2 = API_STATUS.FULFILLED; //1
 
-/**
- * - Số phần tử của tuple cần được khai báo trước (cố định)
- * - Type của từng phần tử trong array cần được khai báo trước, và không nhất thiết phải giống nhau
- * - Với tuple, thứ tự của phần tử rất QUAN TRỌNG
- */
+// console.log(">>> check a1 = ", a1, " a2 = ", a2);
 
-// Optional tuple elements, bắt buộc đặt ở cuối
-let skills4: [boolean, string, number?] = [true, 'hello']; // OK
+enum API_STATUS {
+    PENDING = "PENDING",
+    FULFILLED = "FULFILLED",
+    REJECTED = "REJECTED"
+}
+
+let a1 = API_STATUS.PENDING; //PENDING
+let a2 = API_STATUS.FULFILLED; //FULFILLED
+
+console.log(">>> check a1 = ", a1, " a2 = ", a2);
