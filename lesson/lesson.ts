@@ -1,11 +1,13 @@
 // Type Inference - Tự động gán type
 
-let count: string = "Nam hoang";
+let a: number = 6.9;
 
-console.log(">>> check count : ", count);
+const b: number = 324;
 
-let test = ['nam', 'hoang', 'typescript', 7];
+let c: number;
+c = 34.34;
 
-test.push(1);
+console.log(">>> check c: ", c);
 
-// https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html
+
+// let big = 999999999999999999999999999999999999999999; // kiểu dữ liệu lớn thì dùng BigInt, nhưng rất hiếm khi dùng
