@@ -1,8 +1,8 @@
-// Function types
+// Optional Parameters
 
-// gán type cho giá trị trả về của hàm, tuy nhiên không nhất thiết phải làm như vậy
-const sum = (a: number, b: number): number => {
+const sum = (a: number, b: number, c?: number) => {
+    if (c) return a + b + c;
     return a + b;
 }
 
-console.log(sum(1, 2)); // 3
+console.log(">>> check sum: ", sum(1, 2), sum(1, 2, 3));
