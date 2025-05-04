@@ -1,10 +1,18 @@
-// If else
+// switch case
 
-let age: number = 12;
-if (age > 18) {
-    console.log("You are an adult.");
-} else {
-    console.log("You are a minor.");
+const age: number = 19;
+
+switch (age) {
+    case 24:
+        console.log("hello adult");
+        break;
+    case 20:
+        console.log("hello university student");
+        break;
+    case 18:
+    case 19:
+        console.log("what'up!");
+        break;
+    default:
+        console.log("hello kid");
 }
-
-// else if() {}
