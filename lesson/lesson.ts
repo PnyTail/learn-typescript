@@ -1,17 +1,15 @@
-// Never Type
+// Union Type: gán nhiều hơn 1 type cho 1 biến
 
-const handleException = (errorMessage: string): never => {
-    throw Error(errorMessage);
+function addNumberOrString(a: number | string | boolean, b: number | string) {
+    if (typeof a === 'number' && typeof b === 'number') {
+        return a + b;
+    }
+    if (typeof a === 'string' && typeof b === 'string') {
+        return a.concat(b);
+    }
+    throw new Error('Parameters must be numbers or strings');
 }
 
-// handleException("This is an error message");
-
-// void trả về undefined
-// never không trả về gì cả
-
-const test = (): void => {
-
-}
-
-let a = test(); // undefined
-console.log(">> check a : ", a); // undefined
+// lỗi khi run code
+// lỗi khi compile code
+console.log(">>> check : ", addNumberOrString(true, 2));
