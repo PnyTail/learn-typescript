@@ -1,18 +1,7 @@
-// switch case
+// Functions
 
-const age: number = 19;
-
-switch (age) {
-    case 24:
-        console.log("hello adult");
-        break;
-    case 20:
-        console.log("hello university student");
-        break;
-    case 18:
-    case 19:
-        console.log("what'up!");
-        break;
-    default:
-        console.log("hello kid");
+const sum = (a: number, b: number) => {
+    return a + b;
 }
+
+console.log(sum(1, 2)); // 3
