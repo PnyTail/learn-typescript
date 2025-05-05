@@ -1,8 +1,20 @@
-// Default Parameters
+// Classes
 
-const sum = (a: number, b: number, c = false) => {
-    if (c === false) return a + b;
-    if (c) return a - b;
+class Person {
+    ssn: string;
+    firstName: string;
+    lastName: string;
+
+    constructor(ssn: string, firstName: string, lastName: string) {
+        this.ssn = ssn;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    getFullName(): string {
+        return `calling method: ${this.firstName} ${this.lastName}`;
+    }
 }
 
-console.log(">>> check sum: ", sum(1, 2), sum(1, 2, true));
+let namhp = new Person("123", "Nam", "Hoang");
+console.log(">>> check class: ", namhp.getFullName());
