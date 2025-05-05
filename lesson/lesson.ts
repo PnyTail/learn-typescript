@@ -1,20 +1,17 @@
-// Classes
+// Access Modifiers
 
-class Person {
-    ssn: string;
-    firstName: string;
-    lastName: string;
+class Employee {
+    public empCode: string;
+    private empName: string;
+    //protected empAddress: string; // protected: only accessible within class and subclasses
 
-    constructor(ssn: string, firstName: string, lastName: string) {
-        this.ssn = ssn;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    getFullName(): string {
-        return `calling method: ${this.firstName} ${this.lastName}`;
+    constructor(empCode: string, empName: string) {
+        this.empCode = empCode;
+        this.empName = empName;
     }
 }
+let emp = new Employee("adsfg", "egfb");
+emp.empCode = "123";
+// emp.empName = "Nam Hoang"; //error: Property 'empName' is private and only accessible within class 'Employee'.
 
-let namhp = new Person("123", "Nam", "Hoang");
-console.log(">>> check class: ", namhp.getFullName());
+console.log(">>> check emp: ", emp);
