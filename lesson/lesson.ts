@@ -1,43 +1,31 @@
-// Abstract Classes
+// Interfaces: định nghĩa cấu trúc dữ liệu
 
-abstract class Employee {
-    constructor(private firstName: string, private lastName: string) { }
-
-    abstract getSalary(): number; // Abstract method
-
-    // normal method
-    get FullName(): string {
-        return `${this.firstName} ${this.lastName}`;
-    }
-
-    compensationStatement(): string {
-        return `${this.FullName} makes ${this.getSalary()} a month.`;
-    }
+interface IPerson {
+    readonly firstName: string; // readonly là không thể thay đổi giá trị của biến này
+    lastName: string;
+    address?: string; // ? là optional parameter, có thể có hoặc không
 }
 
-// không thể tạo 1 object từ abstract class, chỉ có thể tạo ra các class con kế thừa từ nó
-// => dùng kế thừa để sử dụng abstract class
+// dài hơn
+// function getFullName(
+//     person: {
+//         firstName: string;
+//         lastName: string;
+//     }
+// ) {
+//     return `${person.firstName} ${person.lastName}`;
+// }
 
-class FullTimeEmployee extends Employee {
-    constructor(firstName: string, lastName: string, private Salary: number) {
-        super(firstName, lastName); // dùng super để kế thừa lại cha
-    }
-
-    // cần viết lại method này, vì nó được khai báo trong abstract class ở trên chứ chưa được đinh nghĩa
-    getSalary(): number {
-        return this.Salary;
-    }
+// ngắn hơn
+function getFullName(person: IPerson) {
+    return `${person.firstName} ${person.lastName}`;
 }
 
-class Contractor extends Employee {
-    constructor(firstName: string, lastName: string, private rate: number, private hours: number) {
-        super(firstName, lastName); // dùng super để kế thừa lại cha
-    }
+let person40 = {
+    firstName: "Nam",
+    lastName: "Hoang",
+    address: "Ha noi",
+};
 
-    getSalary(): number {
-        return this.rate * this.hours;
-    }
-}
+// console.log(">>> check full name: ", getFullName(person40)); // Nam Hoang
 
-const test1 = new FullTimeEmployee("Nam", "Nguyen", 1000);
-console.log(">>> check test1: ", test1.getSalary());
