@@ -1,34 +1,45 @@
-// Getters and Setters
+// Inheritance
 
 class Person {
-    private _age: number;
-    public firstName: string;
-    public lastName: string;
+    firstName: string;
+    lastName: string;
 
-    constructor(_age: number, firstName: string, lastName: string) {
-        this._age = _age;
+    constructor(firstName: string, lastName: string) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
-    // getter
-    get age() {
-        return this._age;
+    getFullName(): string {
+        return `${this.firstName} ${this.lastName}`;
     }
-
-    // setter
-    set age(age: number) {
-        if (age < 0 || age > 120) {
-            throw Error("Invalid age value");
-        }
-        this._age = age;
+    describe(): string {
+        return `This is ${this.firstName} ${this.lastName}.`;
     }
 }
-let person = new Person(25, "Nam", "Hoang");
-// person.currentAge = 14;
-let checkAge = person.age; // getter
 
+//để kế thừa 1 class, ta sử dụng keyword extends
+class Employee1 extends Person {
+    private jobTitle;
 
-person.age = 51; // setter
-// person.setAge(74);
-console.log(">>> check age: ", person);
+    constructor(
+        firstName: string,
+        lastName: string,
+        jobTitle: string) {
+
+        // call the constructor of the Person class:
+        super(firstName, lastName);
+        this.jobTitle = jobTitle;
+    }
+
+    // overwrite
+    describe(): string {
+        return `${super.describe()} from parent - Describe subarashii.`;
+    }
+    //super là gọi đến method của class cha
+
+}
+// let employee = new Employee('John','Doe','Front-end Developer');
+//Employee kết thừa lại person => dùng đc method của parent
+
+let employee = new Employee1('Nam', 'Hoang', 'Web Developer');
+console.log(employee.getFullName());
+console.log(employee.describe());
