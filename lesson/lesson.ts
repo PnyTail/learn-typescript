@@ -30,7 +30,8 @@ class Employee1 extends Person {
         this.jobTitle = jobTitle;
     }
 
-    // overwrite
+    // override the describe method
+    // ghi đè lại method của class cha
     describe(): string {
         return `${super.describe()} from parent - Describe subarashii.`;
     }
