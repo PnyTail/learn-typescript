@@ -1,14 +1,34 @@
-// readonly
+// Getters and Setters
 
 class Person {
-    readonly birthDate: Date; // Readonly property
-    // The readonly modifier makes the property immutable after the constructor has been called.
-    // This means that the property can only be assigned a value in the constructor and cannot be changed afterwards.
-    // This is useful for properties that should not be changed after the object is created, such as a birth date.
+    private _age: number;
+    public firstName: string;
+    public lastName: string;
 
-    constructor(birthDate: Date) {
-        this.birthDate = birthDate;
+    constructor(_age: number, firstName: string, lastName: string) {
+        this._age = _age;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    // getter
+    get age() {
+        return this._age;
+    }
+
+    // setter
+    set age(age: number) {
+        if (age < 0 || age > 120) {
+            throw Error("Invalid age value");
+        }
+        this._age = age;
     }
 }
-let person = new Person(new Date(1990, 12, 25));
-// person.birthDate = new Date(1991, 12, 25); // Compile error
+let person = new Person(25, "Nam", "Hoang");
+// person.currentAge = 14;
+let checkAge = person.age; // getter
+
+
+person.age = 51; // setter
+// person.setAge(74);
+console.log(">>> check age: ", person);
