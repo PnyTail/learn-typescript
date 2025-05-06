@@ -1,46 +1,13 @@
-// Inheritance
+// Static Methods and Properties
 
-class Person {
-    firstName: string;
-    lastName: string;
+class Circle {
+    static pi: number = 3.14; // Static property
+    public test: number = 69;
 
-    constructor(firstName: string, lastName: string) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-    getFullName(): string {
-        return `${this.firstName} ${this.lastName}`;
-    }
-    describe(): string {
-        return `This is ${this.firstName} ${this.lastName}.`;
+    static calculateArea(radius: number): number { // Static method
+        return this.pi * radius * radius;
     }
 }
 
-//để kế thừa 1 class, ta sử dụng keyword extends
-class Employee1 extends Person {
-    private jobTitle;
-
-    constructor(
-        firstName: string,
-        lastName: string,
-        jobTitle: string) {
-
-        // call the constructor of the Person class:
-        super(firstName, lastName);
-        this.jobTitle = jobTitle;
-    }
-
-    // override the describe method
-    // ghi đè lại method của class cha
-    describe(): string {
-        return `${super.describe()} from parent - Describe subarashii.`;
-    }
-    //super là gọi đến method của class cha
-
-}
-// let employee = new Employee('John','Doe','Front-end Developer');
-//Employee kết thừa lại person => dùng đc method của parent
-
-let employee = new Employee1('Nam', 'Hoang', 'Web Developer');
-console.log(employee.getFullName());
-console.log(employee.describe());
+// console.log(">>> check pi = ", Circle.pi); // Accessing static property
+console.log(">>> check area = ", Circle.calculateArea(10)); // Accessing static method
