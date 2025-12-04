@@ -7,7 +7,10 @@
     "build": "tsc",
     "dev": "tsc --watch"
   },
-  "keywords": [],
+  "keywords": [
+    "typescript",
+    "learn typescript"
+  ],
   "author": "",
   "license": "ISC",
   "description": "",
