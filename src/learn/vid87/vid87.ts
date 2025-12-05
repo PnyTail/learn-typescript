@@ -1,4 +1,6 @@
 
+export { };
+
 let age = 23;
 
 //1 biến tuổi nhưng gán nhiều kiểu giá trị

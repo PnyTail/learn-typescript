@@ -1,4 +1,6 @@
 
+export { };
+
 //khai báo type string, number, boolean
 
 const username: string = "Nam Hoang";
