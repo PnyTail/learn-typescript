@@ -1,17 +1,47 @@
 export { };
-// vid 93
+// vid 94
 
-//union type
-let username: string | number = "nam1@gmail.com"; //email
+//object type
 
-username = 123456; //id (cccd)
-
-username = "123435467"; //phone number
-
-const printUsername = (username: string | number) => {
-    if (typeof (username) === "string") { //check điều kiện để typescript gợi ý code, và không báo lỗi
-        console.log("my username: ", username.toUpperCase());
-    }
+// optional
+const student1: {
+    name: string;
+    id: number;
+    phone?: number
+} = {
+    name: "Nam",
+    id: 123
 }
 
-printUsername("Nam Hoang");
+const student2: {
+    name: string;
+    id: number;
+    phone?: number
+} = {
+    name: "Hoang",
+    id: 456,
+    phone: 4313901
+}
+
+const person: {
+    name: string;
+    age: number;
+    address: string;
+    isVip: boolean;
+} = {
+    name: "Nam Hoang",
+    age: 19,
+    address: "Viet Nam",
+    isVip: true
+}
+
+const printInfo = (person: {
+    name: string;
+    age: number;
+    address: string;
+    isVip: boolean;
+}) => {
+    console.log("your name's : ", person.isVip);
+}
+
+printInfo(person);
