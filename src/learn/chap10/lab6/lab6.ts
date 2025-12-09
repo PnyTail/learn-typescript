@@ -27,12 +27,13 @@ const printCourseInfo = (course: TCourse) => {
     console.log(`Tên khoá học: ${course.title}`);
     if (quantityStudentInCourse > 0) {
         console.log(`Số học viên đã đăng ký: ${quantityStudentInCourse}`);
-        course.students.forEach((student) => {
-            console.log(student.name)
-        })
+        const studentList = course.students.map(student => student.name);
+        console.log("Danh sách từng học viên: ", studentList.join(", "));
     } else {
         console.log("Chưa có học viên nào!");
     }
+
+    return;
 }
 
 const main = () => {
@@ -49,7 +50,7 @@ const main = () => {
         name: "Trần Thị Bích",
         email: "TTB@gmail.com",
         isPremium: false,
-        contact: 912345678
+        contact: "912345678"
     }
 
     const learnJavaScript: TCourse = {
@@ -66,7 +67,17 @@ const main = () => {
         students: []
     }
 
+    printCourseInfo(learnJavaScript);
+    console.log("=============")
+    printCourseInfo(learnTypeScript);
+    console.log("=============")
     registerStudentToCourse(student1, learnTypeScript);
+    console.log("=============")
+    printCourseInfo(learnJavaScript);
+    console.log("=============")
+    printCourseInfo(learnTypeScript);
+    console.log("=============")
+    registerStudentToCourse(student2, learnTypeScript);
     console.log("=============")
     printCourseInfo(learnJavaScript);
     console.log("=============")
