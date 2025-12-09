@@ -1,47 +1,32 @@
 export { };
-// vid 94
+// vid 95
 
-//object type
+//type Aliases
 
-// optional
-const student1: {
+type TStudent = {
+    id: string;
     name: string;
-    id: number;
-    phone?: number
-} = {
+    address: string;
+    age: number;
+}
+
+const student1: TStudent = {
+    id: "sv1",
     name: "Nam",
-    id: 123
+    address: "HCM",
+    age: 19
 }
 
-const student2: {
-    name: string;
-    id: number;
-    phone?: number
-} = {
+const student2: TStudent = {
+    id: "sv2",
     name: "Hoang",
-    id: 456,
-    phone: 4313901
+    address: "HN",
+    age: 18
 }
 
-const person: {
-    name: string;
-    age: number;
-    address: string;
-    isVip: boolean;
-} = {
-    name: "Nam Hoang",
-    age: 19,
-    address: "Viet Nam",
-    isVip: true
+const printInfo = (student: TStudent) => {
+    console.log("student name : ", student.name);
 }
 
-const printInfo = (person: {
-    name: string;
-    age: number;
-    address: string;
-    isVip: boolean;
-}) => {
-    console.log("your name's : ", person.isVip);
-}
-
-printInfo(person);
+printInfo(student1);
+printInfo(student2);
