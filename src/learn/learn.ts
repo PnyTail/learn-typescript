@@ -1,32 +1,15 @@
 export { };
-// vid 95
+// vid 99
 
-//type Aliases
+//null & undefined
 
-type TStudent = {
-    id: string;
-    name: string;
-    address: string;
-    age: number;
+type TName = string | null;
+
+let name: TName = null;
+
+const printName = (myName: TName) => {
+    myName?.toUpperCase(); // optional chaining (?.)
+    (myName!).toLowerCase(); // non-null (!)
+    if (myName) myName.toUpperCase(); // hoặc đơn giản là check bằng if
+    console.log("name: ", myName);
 }
-
-const student1: TStudent = {
-    id: "sv1",
-    name: "Nam",
-    address: "HCM",
-    age: 19
-}
-
-const student2: TStudent = {
-    id: "sv2",
-    name: "Hoang",
-    address: "HN",
-    age: 18
-}
-
-const printInfo = (student: TStudent) => {
-    console.log("student name : ", student.name);
-}
-
-printInfo(student1);
-printInfo(student2);
