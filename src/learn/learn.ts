@@ -1,19 +1,29 @@
 export { };
-// vid 101
+// vid 102
 
-// tuple
+// intersection types
 
-type TTuple = [string, number, boolean?]; // quy định 3 phần tử, ? là optional
+type TUsername = string | number; //union type => dùng toán tử hoặc
 
-/**
- * chỉ dùng tuple khi muốn giới hạn số phần tử cho mảng => tiết kiệm bộ nhớ
- * quy định kiểu dữ liệu phải lưu vào
- * có thể dùng optional (?) để tuỳ chọn phần tử đó
- * 
- */
+type TStudent = {
+    id: number;
+    name: string;
+}
 
-const test = ["Nam", 15, true];
+type TCoder = {
+    address: string;
+    language: string;
+}
 
-const test1: TTuple = ["Hoang", 87, false];
-const test2: [string, number, boolean] = ["Hoang", 87, false];
-const test3: TTuple = ["Hoang", 124];
+// intersection types
+type TProgrammer = TStudent & TCoder; //cộng gộp type, tái sử dụng code cũ
+
+const it96: TProgrammer = {
+    id: 124,
+    name: "Nam",
+    address: "HCM",
+    language: "Typescript"
+};
+
+let username: TUsername = "Nam";
+username = 123;
