@@ -1,29 +1,34 @@
 export { };
-// vid 102
+// vid 103
 
-// intersection types
+// interface
 
-type TUsername = string | number; //union type => dùng toán tử hoặc
+interface IPerson {
+    name: string;
+    age: number;
+    address?: string; //optional
+    readonly language: string;
+    sayHi: () => void;
+}
 
-type TStudent = {
-    id: number;
+const user: IPerson = {
+    name: "Nam",
+    age: 17,
+    language: "vn",
+    sayHi: () => console.log("I'm user")
+}
+
+// user.language = "en"; //lỗi, chỉ đọc, không thể sửa
+
+interface Animal {
     name: string;
 }
 
-type TCoder = {
-    address: string;
-    language: string;
+interface Dog extends Animal {
+    breed: string;
 }
 
-// intersection types
-type TProgrammer = TStudent & TCoder; //cộng gộp type, tái sử dụng code cũ
-
-const it96: TProgrammer = {
-    id: 124,
-    name: "Nam",
-    address: "HCM",
-    language: "Typescript"
-};
-
-let username: TUsername = "Nam";
-username = 123;
+const myDog: Dog = {
+    name: "Buddy",
+    breed: "Golden Retriever",
+}
