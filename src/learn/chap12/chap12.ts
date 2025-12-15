@@ -1,27 +1,23 @@
 export { };
-console.log("vid 113");
+console.log("vid 114");
 
-//
-class SinhVien {
-    //thuộc tính (đặc miêu) - đặc điểm miêu tả
-    name: string | undefined;
-    id: number | undefined;
+class Person {
+    name: string;
+    age: number;
 
-    //hành vi
-    sleep() {
-        console.log(`sinh viên đi ngủ: , ${this.name}, và id: ${this.id}`);
+    // hàm tạo
+    constructor();
+    constructor(name: string, age: number);
+
+    constructor(name?: string, age?: number) {
+        this.name = name ?? "unknown name";
+        this.age = age ?? 1;
     }
 }
 
-//object (clone => chi tiết)
-const sv1 = new SinhVien();
-sv1.name = "Nam";
-sv1.id = 124;
-sv1.sleep();
+const person1 = new Person("Nam-Hoang", 19);
+console.log(`my name is: ${person1.name} and age: ${person1.age}`);
 
-console.log("===============");
-
-const sv2 = new SinhVien();
-sv2.name = "Hoang";
-sv2.id = 122;
-sv2.sleep();
+console.log("=================");
+const person2 = new Person();
+console.log(`my name 2 is: ${person2.name} and age 2: ${person2.age}`);
