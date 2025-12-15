@@ -1,29 +1,27 @@
 export { };
-console.log("vid 112");
+console.log("vid 113");
 
-// class: định nghĩa tổng quát, mô tả chung chung
-
-class Lion {
-    // mô tả đặc điểm
+//
+class SinhVien {
+    //thuộc tính (đặc miêu) - đặc điểm miêu tả
     name: string | undefined;
-    color: string | undefined;
+    id: number | undefined;
 
-
-    // mô tả hành vi
+    //hành vi
     sleep() {
-        console.log("Lion is sleeping... : ", this.name);
+        console.log(`sinh viên đi ngủ: , ${this.name}, và id: ${this.id}`);
     }
 }
 
-// mô tả cụ thể từng con Lion => object
-// clone: new
+//object (clone => chi tiết)
+const sv1 = new SinhVien();
+sv1.name = "Nam";
+sv1.id = 124;
+sv1.sleep();
 
-const sutu1 = new Lion();
-sutu1.color = "yellow";
-sutu1.name = "con-su-tu";
-sutu1.sleep();
-console.log("============");
-const sutu2 = new Lion();
-sutu2.color = "orange";
-sutu2.name = "con-heo";
-sutu2.sleep();
+console.log("===============");
+
+const sv2 = new SinhVien();
+sv2.name = "Hoang";
+sv2.id = 122;
+sv2.sleep();
