@@ -1,48 +1,34 @@
 export { };
-console.log("vid 116");
+console.log("vid 117");
 
-class Cat {
-    public name: string;
+class Parent {
+    //fields
+    gold: number | undefined;
+    money: number | undefined;
 
-    private age_: number; //khai báo thuộc tính là private thì thêm dấu underscore (_)
-
-    private _id: number = 3;
-    public get id(): number {
-        return this._id;
-    }
-    public set id(value: number) {
-        this._id = value;
-    }
-
-    private _color: string = "white";
-    public get color(): string {
-        return this._color;
-    }
-    public set color(value: string) {
-        this._color = value;
-    }
-
-    //setter => setAge
-    set age(value: number) {
-        this.age_ = value;
-    }
-
-    //getter => getAge
-    get age() {
-        return this.age_;
-    }
-
-    constructor(name: string, age: number) {
-        this.name = name;
-        this.age_ = age;
-    }
-
-    makeSound() {
-        console.log("meow meow meow...");
+    //methods
+    shareAHouse() {
+        console.log("share a house from parent");
     }
 }
 
-const myCat = new Cat("meo1", 7);
+class Child extends Parent {
+    name: string | undefined;
 
-const getAge = myCat.age; //get
-myCat.age = 12; //set
+    shareAHouse() {
+        super.shareAHouse(); //super tượng trưng cho class cha
+        console.log("share a house from child");
+    }
+}
+
+const child1 = new Child();
+child1.shareAHouse();
+
+//1. cha - con
+
+//Animal - Dog
+//Person - Student
+//Employee - Developer
+
+class Animal { }
+class Dog extends Animal { }
