@@ -1,22 +1,48 @@
 export { };
-console.log("vid 115");
+console.log("vid 116");
 
-class Animal {
-    //fields
+class Cat {
     public name: string;
-    private id: number;
 
-    constructor(name: string, id: number) {
-        this.name = name;
-        this.id = id;
+    private age_: number; //khai báo thuộc tính là private thì thêm dấu underscore (_)
+
+    private _id: number = 3;
+    public get id(): number {
+        return this._id;
+    }
+    public set id(value: number) {
+        this._id = value;
     }
 
-    //method
+    private _color: string = "white";
+    public get color(): string {
+        return this._color;
+    }
+    public set color(value: string) {
+        this._color = value;
+    }
+
+    //setter => setAge
+    set age(value: number) {
+        this.age_ = value;
+    }
+
+    //getter => getAge
+    get age() {
+        return this.age_;
+    }
+
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age_ = age;
+    }
+
     makeSound() {
-        console.log("é é é with id: ", this.id);
+        console.log("meow meow meow...");
     }
 }
 
-const myDog = new Animal("dog1", 151);
-console.log(`animal name: ${myDog.name}`);
-myDog.makeSound();
+const myCat = new Cat("meo1", 7);
+
+const getAge = myCat.age; //get
+myCat.age = 12; //set
