@@ -1,37 +1,27 @@
 export { };
-console.log("vid 119");
+console.log("vid 120");
 
-interface IAnimal {
-    makeSound(): void;
+abstract class Animal {
+    name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    abstract makeSound(): void;
+
+    test() {
+        console.log("do a test: ", this.name);
+    }
 }
 
-class Dog implements IAnimal {
-    makeSound() {
+class Dog extends Animal {
+
+    makeSound(): void {
         console.log("cho sua go go");
     }
 }
 
-class Cat implements IAnimal {
-    makeSound(): void {
-        console.log("meo keu meow meow");
-    }
-}
-
-class Pig implements IAnimal {
-    makeSound(): void {
-        console.log("lợn kêu ủn ỉn");
-    }
-}
-
-const dog1 = new Dog();
-const meo1 = new Cat();
-const heo1 = new Pig();
-
-const arr1: string[] = ["a", "x", "r"];
-const arr2: number[] = [2, 12, 76];
-
-const zoo: IAnimal[] = [dog1, meo1, heo1]; //tính đa hình
-
-zoo.forEach((animal, index) => {
-    animal.makeSound();
-})
+const cho1 = new Dog("chó điên");
+cho1.test();
+cho1.makeSound();
