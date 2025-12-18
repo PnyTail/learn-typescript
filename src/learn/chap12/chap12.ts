@@ -1,34 +1,53 @@
 export { };
-console.log("vid 117");
+console.log("vid 118");
 
-class Parent {
-    //fields
-    gold: number | undefined;
-    money: number | undefined;
+class Person {
+    gender: string | undefined;
+}
 
-    //methods
-    shareAHouse() {
-        console.log("share a house from parent");
+class NhanVien {
+    id: number;
+    name: string;
+
+    constructor(id: number, name: string) {
+        this.id = id;
+        this.name = name;
     }
 }
 
-class Child extends Parent {
+class LapTrinhVien extends NhanVien {
+    skill: string;
+
+    constructor(skill: string, id: number, name: string) {
+        super(id, name); //thực thi hàm tạo của cha
+        this.skill = skill;
+    }
+}
+
+const dev1 = new LapTrinhVien("typescript", 21, "Nam");
+console.log("======================");
+
+interface IAnimal {
+    makeSound(): void;
+}
+
+interface IFlyable {
+    doFly(): void;
+}
+
+// đa kế thừa
+class Bird implements IAnimal, IFlyable {
     name: string | undefined;
 
-    shareAHouse() {
-        super.shareAHouse(); //super tượng trưng cho class cha
-        console.log("share a house from child");
+    makeSound() {
+        console.log("chim keu chip chip");
+    }
+
+    doFly() {
+        console.log("chim bay");
     }
 }
 
-const child1 = new Child();
-child1.shareAHouse();
-
-//1. cha - con
-
-//Animal - Dog
-//Person - Student
-//Employee - Developer
-
-class Animal { }
-class Dog extends Animal { }
+const chim1 = new Bird();
+chim1.makeSound();
+chim1.doFly();
