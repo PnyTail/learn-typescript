@@ -1,53 +1,37 @@
 export { };
-console.log("vid 118");
-
-class Person {
-    gender: string | undefined;
-}
-
-class NhanVien {
-    id: number;
-    name: string;
-
-    constructor(id: number, name: string) {
-        this.id = id;
-        this.name = name;
-    }
-}
-
-class LapTrinhVien extends NhanVien {
-    skill: string;
-
-    constructor(skill: string, id: number, name: string) {
-        super(id, name); //thực thi hàm tạo của cha
-        this.skill = skill;
-    }
-}
-
-const dev1 = new LapTrinhVien("typescript", 21, "Nam");
-console.log("======================");
+console.log("vid 119");
 
 interface IAnimal {
     makeSound(): void;
 }
 
-interface IFlyable {
-    doFly(): void;
-}
-
-// đa kế thừa
-class Bird implements IAnimal, IFlyable {
-    name: string | undefined;
-
+class Dog implements IAnimal {
     makeSound() {
-        console.log("chim keu chip chip");
-    }
-
-    doFly() {
-        console.log("chim bay");
+        console.log("cho sua go go");
     }
 }
 
-const chim1 = new Bird();
-chim1.makeSound();
-chim1.doFly();
+class Cat implements IAnimal {
+    makeSound(): void {
+        console.log("meo keu meow meow");
+    }
+}
+
+class Pig implements IAnimal {
+    makeSound(): void {
+        console.log("lợn kêu ủn ỉn");
+    }
+}
+
+const dog1 = new Dog();
+const meo1 = new Cat();
+const heo1 = new Pig();
+
+const arr1: string[] = ["a", "x", "r"];
+const arr2: number[] = [2, 12, 76];
+
+const zoo: IAnimal[] = [dog1, meo1, heo1]; //tính đa hình
+
+zoo.forEach((animal, index) => {
+    animal.makeSound();
+})
