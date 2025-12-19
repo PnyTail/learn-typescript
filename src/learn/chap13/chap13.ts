@@ -1,23 +1,33 @@
 export { };
-console.log("vid 127");
+console.log("vid 128");
 
-type MyArrString = string[];
+class NumberBox {
+    content: number;
 
-type MyArrNumber = number[];
-
-type MyArr<T> = T[];
-
-type Wrapper<T> = {
-    data: T
+    constructor(content: number) {
+        this.content = content;
+    }
 }
 
-const ex1: MyArr<number> = [12, 5, 64];
-const ex2: MyArr<string> = ["ad", "sp"];
+class StringBox {
+    content: string;
 
-const ex3: Wrapper<number> = {
-    data: 43
+    constructor(content: string) {
+        this.content = content;
+    }
 }
 
-const ex4: Wrapper<string> = {
-    data: "top"
+// viết tổng quan hơn thay vì phải viết từng type một
+class MagicBox<T> {
+    content: T;
+
+    constructor(content: T) {
+        this.content = content;
+    }
 }
+
+const sample1 = new MagicBox<number>(42);
+sample1.content; //number
+
+const sample2 = new MagicBox<string>("hoho");
+sample2.content; //string
