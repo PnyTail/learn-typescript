@@ -1,10 +1,23 @@
 export { };
-console.log("vid 126");
+console.log("vid 127");
 
-function merge<T, U>(a: T, b: U) {
-    return [a, b];
+type MyArrString = string[];
+
+type MyArrNumber = number[];
+
+type MyArr<T> = T[];
+
+type Wrapper<T> = {
+    data: T
 }
 
-const result1 = merge<string, number>("vip", 42);
-const result2 = merge<string, string>("bla", "vla");
-const result3 = merge<number, boolean>(12, false);
+const ex1: MyArr<number> = [12, 5, 64];
+const ex2: MyArr<string> = ["ad", "sp"];
+
+const ex3: Wrapper<number> = {
+    data: 43
+}
+
+const ex4: Wrapper<string> = {
+    data: "top"
+}
