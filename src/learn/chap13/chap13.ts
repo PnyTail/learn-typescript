@@ -1,29 +1,10 @@
 export { };
-console.log("vid 125");
+console.log("vid 126");
 
-function testNumber(value: number) {
-    return value;
+function merge<T, U>(a: T, b: U) {
+    return [a, b];
 }
 
-function testString(value: string) {
-    return value;
-}
-
-function testGeneric<T>(value: T) {
-    return value;
-}
-
-const a = testGeneric<string>("bla bla");
-const b = testGeneric<number>(12);
-
-function getFirstElementInArray<T>(arr: T[]) {
-    return arr[0];
-}
-
-// viết dưới dạng arrow function
-const getFirstElementInArray2 = <T>(arr: T[]) => {
-    return arr[0];
-}
-
-const c = getFirstElementInArray<number>([1, 3, 56]);
-const d = getFirstElementInArray<string>(["aho", "123", "hihi"]);
+const result1 = merge<string, number>("vip", 42);
+const result2 = merge<string, string>("bla", "vla");
+const result3 = merge<number, boolean>(12, false);
