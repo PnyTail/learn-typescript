@@ -1,33 +1,41 @@
 export { };
-console.log("vid 128");
+console.log("vid 129");
 
-class NumberBox {
-    content: number;
-
-    constructor(content: number) {
-        this.content = content;
-    }
+interface IDataString {
+    data: string;
 }
 
-class StringBox {
-    content: string;
-
-    constructor(content: string) {
-        this.content = content;
-    }
+interface IDataNumber {
+    data: number;
 }
 
-// viết tổng quan hơn thay vì phải viết từng type một
-class MagicBox<T> {
-    content: T;
-
-    constructor(content: T) {
-        this.content = content;
-    }
+interface IData<T> {
+    data: T;
 }
 
-const sample1 = new MagicBox<number>(42);
-sample1.content; //number
+const a1: IData<string> = { data: "tha thu" };
 
-const sample2 = new MagicBox<string>("hoho");
-sample2.content; //string
+const a2: IData<number> = { data: 541 };
+
+interface IAPIResponse<T> {
+    status: number;
+    data: T
+}
+
+interface IUser {
+    id: number;
+    name: string;
+    email: string
+}
+
+const fetchUsers = async () => {
+    const res = await fetch("http://localhost:8000/users");
+    const dataAPI = await res.json() as IUser[];
+
+    const result: IAPIResponse<IUser[]> = {
+        status: 200,
+        data: dataAPI
+    }
+
+    result.data.map(item => item.email);
+}
