@@ -1,71 +1,27 @@
 export { };
-console.log("vid 130");
+console.log("vid 131");
 
-// function logLength1<T>(value: T) {
-//     console.log(value.length); //không chắc kiểu T có thuộc tính length
-// }
-
-// ràng buộc. kiểu T phải có thuộc tính length
-function logLength<T extends { length: number }>(value: T) {
-    console.log(value.length);
+//nếu không truyền type generics thì mặc định là kiểu string
+function printValue<T = string>(value: T) {
+    return value;
 }
 
-logLength("xinChao");
-logLength([1, 2, 4]); //cả 2 phía trên đúng vì có thuộc tính length
+const x = printValue("abc");
 
-// logLength(1234); // lỗi, vì number không có thuộc tính length
-
-//ràng buộc interface
-interface IUser {
-    id: number;
-    name: string;
+//gán giá trị mặc định nếu không truyền generics type
+interface ITest<T = string> {
+    data: T
 }
 
-function testInterface<T extends IUser>(value: T) {
-    console.log(value)
+interface ITest2<T = string | number> {
+    data: T
 }
 
-testInterface({ id: 12, name: "hello" }); //ok
-testInterface({ id: 12, name: "hello", age: 41 }); //không lỗi vì có đủ, hơn cũng không sao => miễn là thoả mãn TỐI THIỂU
-// testInterface({ id: 123 }); //lỗi vì thiếu thuộc tính name => ràng buộc
-
-
-// ràng buộc class
-class Animal {
-    move() {
-        console.log("moving...");
-    }
+const y: ITest = {
+    // data: 123 // lỗi
+    data: "hihi" //ok
 }
 
-class Dog extends Animal {
-    bark() {
-        console.log("wolf!");
-    }
+const z: ITest<number> = {
+    data: 543
 }
-
-function testClass<T extends Animal>(value: T) {
-    console.log(value.move());
-
-    if (value instanceof Dog) {
-        value.bark();
-    }
-}
-
-const a = new Animal();
-const b = new Dog();
-
-testClass(a);
-testClass(b);
-
-//ràng buộc keyof
-function getProperty<T, K extends keyof T>(obj: T, key: K) {
-    return obj[key];
-}
-
-const user = {
-    name: "Kirito",
-    age: 18
-}
-
-getProperty(user, "age"); //tham số thứ 2 - phải là key của tham số thứ 1 (ở đây là object user)
-// getProperty(user, "email"); //lỗi
