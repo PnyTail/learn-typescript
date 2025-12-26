@@ -1,0 +1,9 @@
+
+console.log("commonJS module");
+
+const testCommon = (value) => {
+    console.log("test common: ", value);
+}
+
+//@ts-ignore
+module.exports = { testCommon }
