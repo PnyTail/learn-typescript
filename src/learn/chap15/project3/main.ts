@@ -12,29 +12,42 @@ const todoInputElement = document.getElementById("todoInput") as HTMLInputElemen
 //saveTodoBtn
 const saveTodoBtnElement = document.getElementById("saveTodoBtn");
 
+const handleSaveTodoToLocalStorage = (todo: ITodo) => {
+
+    // check sự tồn tại của todo
+    const localTodos = localStorage.getItem("todoList");
+
+    if (localTodos) {
+        //update
+        const todosArr = JSON.parse(localTodos) as ITodo[];
+        todosArr.push(todo);
+
+        localStorage.setItem("todoList", JSON.stringify(todosArr));
+    } else {
+        //create
+        localStorage.setItem("todoList", JSON.stringify([todo]));
+    }
+}
+
 saveTodoBtnElement?.addEventListener("click", () => {
     const todoInput = todoInputElement.value;
-
-    const todoListArr: ITodo[] = [
-        {
+    if (todoInput) {
+        const newTodo: ITodo = {
             id: getRandomInt(1, 999999999),
             name: todoInput
         }
-    ]
 
-    let localData = localStorage.getItem("todoList");
-    let todoList: ITodo[] = [];
+        handleSaveTodoToLocalStorage(newTodo);
 
-    if (localData) {
-        todoList = JSON.parse(localData);
-        // todoList.push(todoListArr); //nếu như để todoListArr là obj thay vì mảng
-        todoList = [...todoList, ...todoListArr];
-    } else {
-        // todoList.push(todoListArr); //nếu như để todoListArr là obj thay vì mảng
-        todoList = [...todoListArr];
+        //close modal
+        //@ts-ignore
+        const createTodoModal = bootstrap.Modal.getOrCreateInstance("#createTodo", {
+            keyboard: false
+        })
+        createTodoModal.hide();
+
+        //clear todo input
+        todoInputElement.value = "";
     }
-
-    localStorage.setItem("todoList", JSON.stringify(todoList));
-    window.location.reload();
 })
 
