@@ -1,6 +1,7 @@
 import { displayTable } from "./table.todo.js";
 import { getRandomInt } from "./helper.js";
 import { displayTodosInTable } from "./display.table.todo.js";
+import { DeleteTodo } from "./delete.todo.js";
 
 console.log("project 3");
 
@@ -58,5 +59,6 @@ saveTodoBtnElement?.addEventListener("click", () => {
 
 // displayTodosInTable();
 displayTable();
+DeleteTodo();
 
 export { ITodo };

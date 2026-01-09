@@ -15,7 +15,7 @@ const displayTable = () => {
                     <td>${todo.id}</td>
                     <td>${todo.name}</td>
                     <td>
-                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-danger delete-btn" data-id="${todo.id}">Delete</button>
                     </td>
                 </tr>
             `
