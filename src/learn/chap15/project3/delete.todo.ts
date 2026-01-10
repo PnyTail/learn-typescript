@@ -1,24 +1,31 @@
 import { ITodo } from "./main";
 
-const DeleteTodo = () => {
-    const deleteBtnElementArr = document.querySelectorAll(".delete-btn"); //array
+const deleteTodoFromLocalStorage = (id: number) => {
     const todoListStr = localStorage.getItem("todoList");
+    if (todoListStr) {
+        const todoList = JSON.parse(todoListStr) as ITodo[];
 
-    deleteBtnElementArr.forEach((btn, index) => {
-        btn.addEventListener("click", () => {
-            const deleteBtnId = btn.getAttribute("data-id") as unknown as number;
-            console.log("check delete btn id: ", deleteBtnId)
+        const newTodoList = todoList.filter(todo => todo.id != id);
 
-            if (todoListStr) {
-                const todoList = JSON.parse(todoListStr) as ITodo[];
+        localStorage.setItem("todoList", JSON.stringify(newTodoList));
 
-                const newTodoList = todoList.filter((todo) => todo.id != deleteBtnId);
+        //reload
+        window.location.reload();
+    }
+}
 
-                localStorage.setItem("todoList", JSON.stringify(newTodoList));
+const DeleteTodo = () => {
+    const deleteBtnElementArr = document.querySelectorAll(".delete-btn"); //array   
+
+    deleteBtnElementArr?.forEach((btn, index) => {
+        const btnElement = btn as HTMLButtonElement;
+        btnElement.addEventListener("click", () => {
+            const id = btnElement.getAttribute("data-id");
+
+            // delete todo
+            if (id) {
+                deleteTodoFromLocalStorage(+id); //add plus sign to convert string to number
             }
-
-            //reload
-            window.location.reload();
         })
     })
 
