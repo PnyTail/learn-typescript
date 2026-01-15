@@ -2,6 +2,7 @@ import { displayTable } from "./table.todo.js";
 import { getRandomInt } from "./helper.js";
 import { displayTodosInTable } from "./display.table.todo.js";
 import { DeleteTodo } from "./delete.todo.js";
+declare const bootstrap: any;
 
 console.log("project 3");
 
@@ -24,6 +25,22 @@ const handleSaveTodoToLocalStorage = (todo: ITodo) => {
         //update
         const todosArr = JSON.parse(localTodos) as ITodo[];
         todosArr.push(todo);
+
+        const tableBody = document.getElementById("todosTable tbody");
+        const newRow = document.createElement("tr");
+
+        let tbodyRowCount = (document.getElementById("todosTable") as HTMLTableElement).rows.length;
+        newRow.innerHTML = `
+            <th scope="row">${tbodyRowCount}</th>
+            <td>${todo.id}</td>
+            <td>${todo.name}</td>
+            <td>
+                <button class="btn btn-danger delete-btn" data-id="${todo.id}">Delete</button>
+            </td>
+        `;
+
+        // Thêm dòng vào cuối bảng
+        tableBody?.appendChild(newRow);
 
         localStorage.setItem("todoList", JSON.stringify(todosArr));
     } else {
@@ -53,7 +70,13 @@ saveTodoBtnElement?.addEventListener("click", () => {
         todoInputElement.value = "";
 
         //reload
-        window.location.reload();
+        // window.location.reload();
+
+
+        //show toast
+        const toastDiv = document.getElementById('toastCreate');
+        const toast = new bootstrap.Toast(toastDiv)
+        toast.show()
     }
 })
 

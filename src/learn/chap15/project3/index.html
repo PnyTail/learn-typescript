@@ -63,6 +63,34 @@
         </table>
     </div>
 
+    <!-- Toast delete a todo -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toastDelete" class="toast align-items-center text-bg-danger bg-gradient border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Delete a todo successfully!
+                </div>
+                <button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast add a new todo -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="toastCreate" class="toast align-items-center text-bg-success bg-gradient border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Add a new todo successfully!
+                </div>
+                <button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
