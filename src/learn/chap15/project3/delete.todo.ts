@@ -1,5 +1,5 @@
+import { createToast } from "./helper.js";
 import { ITodo } from "./main";
-declare const bootstrap: any;
 
 const deleteTodoFromLocalStorage = (id: number) => {
     const todoListStr = localStorage.getItem("todoList");
@@ -9,9 +9,6 @@ const deleteTodoFromLocalStorage = (id: number) => {
         const newTodoList = todoList.filter(todo => todo.id != id);
 
         localStorage.setItem("todoList", JSON.stringify(newTodoList));
-
-        //reload
-        // window.location.reload();
     }
 }
 
@@ -25,26 +22,18 @@ const DeleteTodo = () => {
 
             // delete todo
             if (id) {
-                // deleteTodoFromLocalStorage(+id); //add plus sign to convert string to number
-                const todoListStr = localStorage.getItem("todoList");
-                if (todoListStr) {
-                    const todoList = JSON.parse(todoListStr) as ITodo[];
+                deleteTodoFromLocalStorage(+id); //add plus sign to convert string to number
 
-                    const newTodoList = todoList.filter(todo => todo.id != id);
+                //delete row
+                const row = btnElement.closest("tr");
+                row?.remove();
 
-                    localStorage.setItem("todoList", JSON.stringify(newTodoList));
-
-                    const row = btnElement.closest("tr");
-                    row?.remove();
-
-                    const toastDiv = document.getElementById('toastDelete');
-                    const toast = new bootstrap.Toast(toastDiv)
-                    toast.show()
-                }
+                //show toast when delete
+                createToast("#toastDelete");
             }
         })
     })
 
 }
 
-export { DeleteTodo };
+export { DeleteTodo, deleteTodoFromLocalStorage };
