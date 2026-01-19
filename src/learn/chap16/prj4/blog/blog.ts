@@ -6,12 +6,9 @@ interface IBlog {
     content: string;
 }
 
-const fetchBlogs = async () => {
-    const res = await fetch("http://localhost:8000/blogs");
-    const data = await res.json() as IBlog[];
-    const tbody = document.querySelector("#tableBlog tbody")!;
-
-    if (data && data.length) {
+const renderTable = (data: IBlog[]) => {
+    const tbody = document.querySelector("#tableBlog tbody");
+    if (tbody) {
         data.forEach((blog, index) => {
             tbody.innerHTML += `
                 <tr>
@@ -28,6 +25,12 @@ const fetchBlogs = async () => {
             `
         })
     }
+}
+
+const fetchBlogs = async () => {
+    const res = await fetch("http://localhost:8000/blogs");
+    const data = await res.json() as IBlog[];
+    renderTable(data);
 }
 
 fetchBlogs();
