@@ -14,7 +14,6 @@ const handleCreateBlog = async (blog: IBlog) => {
 
 const handleAddNewRow = (blog: IBlog) => {
     const tableBody = document.querySelector('#tableBlog tbody');
-    const todoListStr = localStorage.getItem("todoList");
 
     // Tạo phần tử dòng mới
     const newRow = document.createElement("tr");
@@ -49,6 +48,12 @@ const createBlog = () => {
         const authorInput = authorInputElement.value;
         const contentInput = contentInputElement.value;
 
+        //validate inputs
+        if (!titleInput || !authorInput || !contentInput) {
+            alert("Please fill in all inputs...");
+            return;
+        }
+
         const newBlog: IBlog = {
             id: getRandomInt(1, 999999999),
             title: titleInput,
@@ -60,10 +65,10 @@ const createBlog = () => {
 
         //close modal
         //@ts-ignore
-        const createTodoModal = bootstrap.Modal.getOrCreateInstance("#createBlog", {
+        const createBlogModal = bootstrap.Modal.getOrCreateInstance("#createBlog", {
             keyboard: false
         })
-        createTodoModal.hide();
+        createBlogModal.hide();
 
         //clear todo input
         titleInputElement.value = "";
