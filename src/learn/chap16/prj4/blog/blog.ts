@@ -1,4 +1,5 @@
-export { };
+import { createBlog } from "./create.blog.js";
+
 interface IBlog {
     id: number;
     title: string;
@@ -12,7 +13,6 @@ const renderTable = (data: IBlog[]) => {
         data.forEach((blog, index) => {
             tbody.innerHTML += `
                 <tr>
-                    <th scope="row">${index + 1}</th>
                     <td>${blog.id}</td>
                     <td>${blog.title}</td>
                     <td>${blog.author}</td>
@@ -34,5 +34,7 @@ const fetchBlogs = async () => {
 }
 
 fetchBlogs();
+createBlog();
 
 console.log("blog.ts")
+export { IBlog };
