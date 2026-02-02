@@ -28,7 +28,7 @@ const handleAddNewRow = (blog: IBlog) => {
             <td>${blog.content}</td>
             <td>
                 <button class="btn btn-warning">Edit</button>
-                <button class="btn btn-danger delete-btn" data-id="${blog.id}">Delete</button>
+                <button class="btn btn-danger delete-blog" data-id="${blog.id}">Delete</button>
             </td>
         </tr>
     `;
@@ -38,22 +38,7 @@ const handleAddNewRow = (blog: IBlog) => {
 
     //gán sự kiện onclick cho row vừa tạo
     const btnElement = document.querySelector(`[data-id="${blog.id}"]`)!;
-
-    btnElement.addEventListener("click", () => {
-        const id = btnElement.getAttribute("data-id") as unknown as number;
-
-        // delete blog
-        if (id) {
-            handleDeleteBlog(id); //add plus sign to convert string to number
-
-            //delete row
-            const row = btnElement.closest("tr");
-            row?.remove();
-
-            //show toast when delete
-            createToast("#toastDelete");
-        }
-    })
+    handleDeleteBlog(btnElement as HTMLButtonElement);
 }
 
 const createBlog = () => {
