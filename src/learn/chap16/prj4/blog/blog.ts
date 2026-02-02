@@ -1,4 +1,5 @@
 import { createBlog } from "./create.blog.js";
+import { deleteBlog } from "./delete.blog.js";
 
 interface IBlog {
     id: number;
@@ -19,7 +20,7 @@ const renderTable = (data: IBlog[]) => {
                     <td>${blog.content}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-danger delete-btn" data-id="${blog.id}">Delete</button>
                     </td>
                 </tr>
             `
@@ -31,6 +32,7 @@ const fetchBlogs = async () => {
     const res = await fetch("http://localhost:8000/blogs");
     const data = await res.json() as IBlog[];
     renderTable(data);
+    deleteBlog();
 }
 
 fetchBlogs();
