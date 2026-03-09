@@ -93,6 +93,10 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
+                                <div class="d-none">
+                                    <label class="form-label">Id:</label>
+                                    <input type="text" class="form-control" id="idUpdate">
+                                </div>
                                 <div>
                                     <label class="form-label">Title:</label>
                                     <input type="text" class="form-control" id="titleUpdate">
@@ -161,6 +165,20 @@
             <div class="d-flex">
                 <div class="toast-body">
                     Delete a blog successfully!
+                </div>
+                <button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast update a blog -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="toastUpdateBlog" class="toast align-items-center text-bg-warning bg-gradient border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Update a blog successfully!
                 </div>
                 <button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
                     aria-label="Close"></button>

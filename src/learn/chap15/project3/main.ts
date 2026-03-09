@@ -45,7 +45,7 @@ const handleAddNewRow = (todo: ITodo) => {
     const btnElement = document.querySelector(`[data-id="${todo.id}"]`)!;
 
     btnElement.addEventListener("click", () => {
-        const id = btnElement.getAttribute("data-id") as unknown as number;
+        const id = btnElement.getAttribute("data-id");
 
         // delete todo
         if (id) {

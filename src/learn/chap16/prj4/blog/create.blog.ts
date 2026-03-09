@@ -14,7 +14,7 @@ const handleCreateBlog = async (blog: IBlog) => {
     });
 }
 
-const handleAddNewRow = (blog: IBlog) => {
+export const handleAddNewRow = (blog: IBlog) => {
     const tableBody = document.querySelector('#tableBlog tbody');
 
     // Tạo phần tử dòng mới
@@ -46,12 +46,12 @@ const handleAddNewRow = (blog: IBlog) => {
     tableBody?.appendChild(newRow);
 
     //gán sự kiện onclick cho row vừa tạo
-    const btnElement = document.querySelector(`[data-id="${blog.id}"]`)!;
-    handleDeleteBlog(btnElement as HTMLButtonElement);
+    const btnDeleteElement = document.querySelector(`[data-id="${blog.id}"]`)!;
+    handleDeleteBlog(btnDeleteElement as HTMLButtonElement);
 
     //gán sự kiện update onclick cho row vừa tạo
     const btnUpdateElement = document.querySelector(`[data-update-id="${blog.id}"]`)!;
-    handleUpdateBlog(btnUpdateElement as HTMLButtonElement, true);
+    handleUpdateBlog(btnUpdateElement as HTMLButtonElement);
 }
 
 const createBlog = () => {

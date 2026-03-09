@@ -1,6 +1,6 @@
 import { createBlog } from "./create.blog.js";
 import { deleteBlog } from "./delete.blog.js";
-import { updateBlog } from "./update.blog.js";
+import { actionSubmitModal, updateBlog } from "./update.blog.js";
 
 interface IBlog {
     id: number;
@@ -44,14 +44,12 @@ const fetchBlogs = async () => {
 }
 
 fetchBlogs().then(() => {
-    // return Promise.all([
-    //     deleteBlog(),
-    //     updateBlog()
-    // ])
     deleteBlog();
     updateBlog()
 });
 createBlog();
+
+actionSubmitModal();
 
 console.log("blog.ts")
 export { IBlog };
