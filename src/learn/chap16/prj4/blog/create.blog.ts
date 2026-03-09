@@ -1,6 +1,7 @@
 import { createToast, getRandomInt } from "../helper.js";
 import { IBlog } from "./blog.js";
 import { handleDeleteBlog } from "./delete.blog.js";
+import { handleUpdateBlog } from "./update.blog.js";
 
 const handleCreateBlog = async (blog: IBlog) => {
     const rawResponse = await fetch("http://localhost:8000/blogs", {
@@ -27,7 +28,15 @@ const handleAddNewRow = (blog: IBlog) => {
             <td>${blog.author}</td>
             <td>${blog.content}</td>
             <td>
-                <button class="btn btn-warning">Edit</button>
+                <button 
+                    class="btn btn-warning edit-blog"
+                    data-update-id="${blog.id}"
+                    data-title="${blog.title}"
+                    data-author="${blog.author}"
+                    data-content="${blog.content}"
+                >
+                    Edit
+                </button>
                 <button class="btn btn-danger delete-blog" data-id="${blog.id}">Delete</button>
             </td>
         </tr>
@@ -39,6 +48,10 @@ const handleAddNewRow = (blog: IBlog) => {
     //gán sự kiện onclick cho row vừa tạo
     const btnElement = document.querySelector(`[data-id="${blog.id}"]`)!;
     handleDeleteBlog(btnElement as HTMLButtonElement);
+
+    //gán sự kiện update onclick cho row vừa tạo
+    const btnUpdateElement = document.querySelector(`[data-update-id="${blog.id}"]`)!;
+    handleUpdateBlog(btnUpdateElement as HTMLButtonElement, true);
 }
 
 const createBlog = () => {

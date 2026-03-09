@@ -1,5 +1,6 @@
 import { createBlog } from "./create.blog.js";
 import { deleteBlog } from "./delete.blog.js";
+import { updateBlog } from "./update.blog.js";
 
 interface IBlog {
     id: number;
@@ -19,7 +20,15 @@ const renderTable = (data: IBlog[]) => {
                     <td>${blog.author}</td>
                     <td>${blog.content}</td>
                     <td>
-                        <button class="btn btn-warning">Edit</button>
+                        <button 
+                            class="btn btn-warning edit-blog"
+                            data-update-id="${blog.id}"
+                            data-title="${blog.title}"
+                            data-author="${blog.author}"
+                            data-content="${blog.content}"
+                        >
+                            Edit
+                        </button>
                         <button class="btn btn-danger delete-blog" data-id="${blog.id}">Delete</button>
                     </td>
                 </tr>
@@ -35,7 +44,12 @@ const fetchBlogs = async () => {
 }
 
 fetchBlogs().then(() => {
+    // return Promise.all([
+    //     deleteBlog(),
+    //     updateBlog()
+    // ])
     deleteBlog();
+    updateBlog()
 });
 createBlog();
 
